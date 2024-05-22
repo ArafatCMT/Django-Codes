@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>This is Home page</h1>
+    <h2>Topic: Context in Django.</h2>
+    <h3>Author : {{Author}}</h3>
+    <h3>Age : {{Age}}</h3>
+
+    <!-- conditional statement -->
+    {% if Age >= 20 %}
+        <h3>Your are a Citizen.</h3>
+    {% elif Age >= 10 and Age <= 17 %}
+        <h3>Your are Not Citizen</h3>
+    {% else %}
+        <h3>Your a Child</h3>
+    {% endif %}
+
+
+    <!-- for loop -->
+    {% for i in courses%}
+    <h3>{{i.id}} {{i.course_name}} {{i.fee}}</h3>
+    {% endfor %}
+
+    <!-- join filter -->
+    <h1>{{ lst | join:" " }}</h1>
+
+    <!-- datetime filter -->
+    <h1>{{ birthDay | date:"D d M Y" }}</h1>
+
+    <!-- capfirst filter  -->
+    <h1>{{Author | capfirst }}</h1>
+
+    <!-- cut filter  -->
+    <h1>{{ bio | cut:" " }}</h1>
+
+    <!-- length filter  -->
+    <h1>{{lst | length}}</h1>
+</body>
+</html>
