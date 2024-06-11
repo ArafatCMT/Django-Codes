@@ -35,6 +35,7 @@ def set_session(request):
 def get_session(request):
     if 'name' in request.session:
         name = request.session.get('name', 'Guest')
+        request.session.modified = True
         # age = request.session.get('age')
         return render(request, 'get_session.html', {'name': name})
     else:
