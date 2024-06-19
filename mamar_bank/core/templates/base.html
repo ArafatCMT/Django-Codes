@@ -8,11 +8,14 @@
 </head>
 <body class="bg-indigo-600">
     {% include 'navbar.html' %}
+
+    {% block body %}
     <div>
-        {% block body %}
             {% block content %}
             {% endblock %}
-        {% endblock %}
     </div>
+        {% include 'footer.html' %}
+    {% endblock %}
+    
 </body>
 </html>

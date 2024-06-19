@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 from accounts.constants import ACCOUNT_TYPE, GENDER_TYPE
 
+class BankRupt(models.Model):
+    bankrupt = models.BooleanField(default=False)
+
 class UserBankAccount(models.Model):
     user = models.OneToOneField(User, related_name='account', on_delete=models.CASCADE)
     account_type = models.CharField(max_length=10, choices=ACCOUNT_TYPE)
@@ -11,6 +14,7 @@ class UserBankAccount(models.Model):
     initial_deposite_date = models.DateField(auto_now_add=True)
     balance = models.DecimalField(default=0, max_digits=12, decimal_places=2) # max digit = 12 mne ekjon user 12 digit obdi taka rakte parbe
     # decimal_place = 2 mne doshomik er por 2 ghor porjont rakte casci
+    bankrupt = models.ForeignKey(BankRupt, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return str(self.account_no)

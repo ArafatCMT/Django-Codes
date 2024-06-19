@@ -11,7 +11,7 @@ from django.views import View
 class UserRegistrationView(FormView):
     template_name = 'accounts/user_registration.html'
     form_class = UserRegistrationForm
-    success_url = reverse_lazy('register')
+    success_url = reverse_lazy('profile')
 
     def form_valid(self, form):
         print(form.cleaned_data)
@@ -29,7 +29,7 @@ class UserLogoutView(LogoutView):
     def get_success_url(self):
         if self.request.user.is_authenticated:
             logout(self.request)
-        return reverse_lazy('register')
+        return reverse_lazy('login')
     
 class UserBankAccountUpdateView(View):
     template_name = 'accounts/profile.html'
